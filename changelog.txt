@@ -1,0 +1,17 @@
+v 0.8
+----------------------------
+- Primera version
+
+v 0.9
+----------------------------
+- Simplificado el formato del XML. Ahora contempla las constantes y
+  el nombrado de resultados anteriores
+
+- Completado el servidor Calculadora para realizar el ejemplo de operacion
+
+- Cliente tiene el esqueleto de una operacion completa
+
+v 1.0
+----------------------------
+- Corregidos algunos errores
+- Implementado un objeto TaskOperation para el cliente

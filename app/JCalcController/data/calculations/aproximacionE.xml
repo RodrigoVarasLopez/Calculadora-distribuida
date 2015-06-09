@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="aproximacionE">
+	<!-- (x1+x2+...+xn)/n -->
+	<operation id="aproximacionE">
+		<server name="localhost" port="7001"></server>
+		<type>aproximacionE</type>
+		<input type="Number" name="n"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>

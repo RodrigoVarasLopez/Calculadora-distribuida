@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<calculation type="opX2Y21Z3">
+	<!-- X^2 + Y^2 + 1 / Z + X + 3 -->
+	<operation id="x2">
+		<server name="localhost" port="7001"></server>
+		<type>x2</type>
+		<input type="Number" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	<operation id="y2">
+		<server name="localhost" port="7001"></server>
+		<type>x2</type>
+		<input type="Number" name="y"></input>
+		<result type="Number"></result>
+	</operation>
+	<operation id="1_z">
+		<server name="localhost" port="7001"></server>
+		<type>x/y</type>
+		<input type="Constant" value="1"></input>
+		<input type="Number" name="z"></input>
+		<result type="Number"></result>
+	</operation>
+	<operation id="x2+y2">
+		<server name="localhost" port="7001"></server>
+		<input type="Result" id="x2"></input>
+                <input type="Result" id="1_z"></input>
+		<input type="Result" id="y2"></input>
+		<input type="Input" name="x"></input>
+		<input type="Constant" value="3"></input>
+		<type>x+y</type>
+		<result type="Number"></result>
+	</operation>	
+</calculation>

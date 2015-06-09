@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="media">
+	<!-- (x1+x2+...+xn)/n -->
+	<operation id="media">
+		<server name="localhost" port="7001"></server>
+		<type>media</type>
+		<input type="Array" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>

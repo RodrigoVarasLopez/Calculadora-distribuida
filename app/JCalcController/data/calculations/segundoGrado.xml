@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<calculation type="opax2+bx+c">
+	<!-- ax^2+bx^+c -->
+	<operation id="b2">
+		<server name="localhost" port="7001"></server>
+		<type>x2</type>
+		<input type="Number" name="b"></input>
+		<result type="Number"></result>
+	</operation>
+	<operation id="4ac">
+		<server name="localhost" port="7001"></server>
+		<type>x*y</type>
+		<input type="Number" name="a"></input>
+                <input type="Number" name="c"></input>
+                <input type="Constant" value="4"></input>
+		<result type="Number"></result>
+	</operation>
+	<operation id="b2-4ac">
+		<server name="localhost" port="7001"></server>
+		<type>x-y</type>
+		<input type="Result" id="b2"></input>
+		<input type="Result" id="4ac"></input>
+		<result type="Number"></result>
+	</operation>
+        <operation id="raizb2-4ac">
+		<server name="localhost" port="7001"></server>
+		<type>raiz2</type>
+		<input type="Result" id="b2-4ac"></input>
+		<result type="Number"></result>
+	</operation>
+        <operation id="b+raizb2-4ac">
+		<server name="localhost" port="7001"></server>
+		<type>x+y</type>
+		<input type="Result" id="raizb2-4ac"></input>
+                <input type="Input" name="b"></input>
+		<result type="Number"></result>
+	</operation>
+        <operation id="a*2">
+		<server name="localhost" port="7001"></server>
+		<type>x*y</type>
+		<input type="Input" name="a"></input>
+		<input type="Constant" value="2"></input>
+		<result type="Number"></result>
+	</operation>
+                <operation id="(b+raizb2-4ac)/2a">
+		<server name="localhost" port="7001"></server>	
+		<input type="Result" id="b+raizb2-4ac"></input>
+                <input type="Result" id="a*2"></input>
+                <type>x/y</type>
+		<result type="Number"></result>
+	</operation>
+</calculation>
