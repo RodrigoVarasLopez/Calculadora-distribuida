@@ -16,7 +16,7 @@ import protocol.common.*;
  *
  * @author root
  */
-public class TaskOperation {
+public class TaskOperation implements Runnable {
     
     private Calculation calc;
     private Operation op;

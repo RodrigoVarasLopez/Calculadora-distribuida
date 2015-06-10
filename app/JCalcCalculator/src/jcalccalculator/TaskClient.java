@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author root
  */
-public class TaskClient {
+public class TaskClient implements Runnable {
     
     private ClientCalculatorProtocol ccp;
     private FloatEngine fengine;

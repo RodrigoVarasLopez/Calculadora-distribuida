@@ -15,7 +15,7 @@ import protocol.clientcontroller.*;
  *
  * @author fjpalacios
  */
-public class TaskClient {
+public class TaskClient implements Runnable {
     
     private ClientControllerProtocol ccp;
     

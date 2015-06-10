@@ -15,7 +15,7 @@ import protocol.clientcalculator.*;
  *
  * @author root
  */
-public class MainCalculator {
+public class MainCalculator implements Runnable  {
 
     public static Configuration cfg;
     public static Log log;
@@ -81,7 +81,8 @@ public class MainCalculator {
                 Socket sc = ss.accept();
                 ClientCalculatorProtocol ccp = new ClientCalculatorProtocol(sc);
                 ccp.initCalculator();
-                new TaskClient(ccp).run();
+                TaskClient cli = new TaskClient(ccp);
+                new Thread((Runnable)cli).start();
             }
         }
         catch(IOException ex) {

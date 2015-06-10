@@ -20,7 +20,7 @@ public class MainClient {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         char respuesta, salto;
         String operacion=null;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -58,7 +58,10 @@ public class MainClient {
 
                         for(Operation op : calc.getOperaciones()) {                    
                             TaskOperation task = new TaskOperation(op, calc);
-                            task.run();
+                            Thread th1 = new Thread((Runnable) task);
+                            th1.start();
+                            th1.join();
+                            
                             if( task.getError()==null ) {
                                 calc.updateOperation( task.getResult() );                        
                             }
@@ -107,7 +110,9 @@ public class MainClient {
 
                         for(Operation op : calc.getOperaciones()) {                    
                             TaskOperation task = new TaskOperation(op, calc);
-                            task.run();
+                            Thread th1 = new Thread((Runnable) task);
+                            th1.start();
+                            th1.join();
                             if( task.getError()==null ) {
                                 calc.updateOperation( task.getResult() );                        
                             }

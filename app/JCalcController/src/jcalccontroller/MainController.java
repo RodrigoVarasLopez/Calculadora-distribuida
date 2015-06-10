@@ -16,7 +16,7 @@ import protocol.clientcontroller.*;
  *
  * @author root
  */
-public class MainController {
+public class MainController implements Runnable {
 
     public static Configuration cfg;
     public static Log log;
