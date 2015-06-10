@@ -27,7 +27,7 @@ public class Interfaz {
         
     }
     public static boolean isvalid (int ch){
-        if (ch <'1'| ch>'8'& ch !='s') return false;
+        if (ch <'1'| ch>'9'& ch !='s') return false;
         else return true;
     }
     public static String respuesta(char ch){
@@ -39,6 +39,7 @@ public class Interfaz {
         if (ch == '6') return "varianza";
         if (ch == '7') return "desviacion";
         if (ch == '8') return "moda";
+        if (ch == '9') return "mediana";
         if (ch == 's') return "salir";
         else return "fallo";  
     }

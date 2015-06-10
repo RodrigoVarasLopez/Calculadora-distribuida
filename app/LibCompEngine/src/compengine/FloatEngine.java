@@ -121,6 +121,20 @@ public class FloatEngine {
             }       
         return resultado;
     }
+    public double mediana (float[] operandos){
+        //Metodo de la burbuja
+        for (int i = 0; i < (operandos.length - 1); i++) { 
+            for (int j = i + 1; j < operandos.length; j++) { 
+                if (operandos[j] < operandos[i]) 
+                    { 
+                    float temp = operandos[j]; 
+                      operandos[j] = operandos[i]; 
+                      operandos[i] = temp; 
+                    } 
+                } 
+        }
+        return operandos[(int)(operandos.length/2)];
+    }
     
     public double desviacion (float[] operandos) throws ComputeEngineException{
         Double varianza = varianza(operandos);

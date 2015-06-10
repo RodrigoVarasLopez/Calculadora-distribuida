@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="mediana">
+	<!-- (x1+x2+...+xn)/n -->
+	<operation id="mediana">
+		<server name="localhost" port="7001"></server>
+		<type>mediana</type>
+		<input type="Array" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>
