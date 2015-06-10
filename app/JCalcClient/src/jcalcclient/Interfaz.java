@@ -19,6 +19,7 @@ public class Interfaz {
                 +"4. op X2Y21Z3\n"
                 +"5. Operacion de segundo grado\n"
                 +"6. Varianza\n"
+                +"s. Salir\n"
                 +"Seleccione la operación desada:"
             );
         

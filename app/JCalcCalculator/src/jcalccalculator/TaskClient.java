@@ -89,8 +89,8 @@ public class TaskClient {
             rs.addData(op);
             return ccp.sendResponse(rs);
         }
-            
-        
+              
+         
         else if( op.getType().compareTo("media")==0 ) {
             Float[] numeros =(Float[])op.getInputData().get(0).value;
  
@@ -183,10 +183,21 @@ public class TaskClient {
             rs.setSubtype("_JCALC_OPERATION_OK_");
             rs.addData(op);
             return ccp.sendResponse(rs);            
+        } 
+        else if( op.getType().compareTo("cambioSigno")==0 ) {
+            
+            Float n = (Float)op.getInputData().get(0).value;
+            double rss = fengine.cambioSigno(n.floatValue());
+            Double res = new Double(rss);
+            // Double res = new Double(fengine.x2(n.floatValue()));
+            op.setResult(res);            
+            rs.setSubtype("_JCALC_OPERATION_OK_");
+            rs.addData(op);
+            return ccp.sendResponse(rs);            
         }        
-        else if( op.getType().compareTo("xey")==0 ) {
-           
-        }        
+        
+
+      
         else if( op.getType().compareTo("raiz2")==0 ) {
             
             Float n = (Float)op.getInputData().get(0).value;
@@ -203,7 +214,33 @@ public class TaskClient {
             rs.addData(op);
             return ccp.sendResponse(rs); 
         }        
-
+        else if( op.getType().compareTo("segundoGrado")==0 ) {
+            Float[] numeros = new Float[op.getInputData().size()];
+            for(int i=0; i<numeros.length; i++) {
+                numeros[i] = (Float)op.getInputData().get(i).value;
+            }
+            float[] datos = ArrayUtils.toPrimitive(numeros);
+            float[] resta= new float[2]; 
+            float[] suma= new float[2];
+            resta[0] = datos[0];
+            resta[1] = datos[2];
+            suma[0] = datos [1];
+            suma[1] = datos [2];
+            try {
+                Double[] res = new Double[2];
+                res[0]= new Double(fengine.dividir(suma));
+                res[1]= new Double(fengine.dividir(resta));
+                op.setResult(res);
+            
+                rs.setSubtype("_JCALC_OPERATION_OK_");
+                rs.addData(op);
+            }
+            catch(ComputeEngineException e) {
+                // Error si se dividio por cero
+            }
+            return ccp.sendResponse(rs);            
+        } 
+         
         return true;
     }      
 }

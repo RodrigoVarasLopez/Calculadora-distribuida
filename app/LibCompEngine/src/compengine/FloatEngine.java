@@ -62,6 +62,10 @@ public class FloatEngine {
     public double x2(float x)
     {        
         return (double)(x*x);
+    }
+     public double cambioSigno(float x)
+    {        
+        return (double)x-(double)(x+x);
     }   
 
     //--------------------------------------------------------------------------

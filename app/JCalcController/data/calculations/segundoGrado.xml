@@ -28,11 +28,24 @@
 		<input type="Result" id="b2-4ac"></input>
 		<result type="Number"></result>
 	</operation>
-        <operation id="b+raizb2-4ac">
+        <operation id="-b">
+		<server name="localhost" port="7001"></server>
+		<type>cambioSigno</type>
+		<input type="Input" name="b"></input>
+		<result type="Number"></result>
+        </operation>        
+         <operation id="-b+raizb2-4ac">
 		<server name="localhost" port="7001"></server>
 		<type>x+y</type>
 		<input type="Result" id="raizb2-4ac"></input>
-                <input type="Input" name="b"></input>
+                <input type="Result" id="-b"></input>
+		<result type="Number"></result>
+	</operation>
+        <operation id="-b-raizb2-4ac">
+		<server name="localhost" port="7001"></server>
+		<type>x-y</type>
+                <input type="Result" id="-b"></input>
+		<input type="Result" id="raizb2-4ac"></input>
 		<result type="Number"></result>
 	</operation>
         <operation id="a*2">
@@ -42,11 +55,12 @@
 		<input type="Constant" value="2"></input>
 		<result type="Number"></result>
 	</operation>
-                <operation id="(b+raizb2-4ac)/2a">
+                <operation id="(-b+-raizb2-4ac)/2a">
 		<server name="localhost" port="7001"></server>	
-		<input type="Result" id="b+raizb2-4ac"></input>
+		<input type="Result" id="-b-raizb2-4ac"></input>
+                <input type="Result" id="-b+raizb2-4ac"></input>
                 <input type="Result" id="a*2"></input>
-                <type>x/y</type>
-		<result type="Number"></result>
+                <type>segundoGrado</type>
+		<result type="Array"></result>
 	</operation>
 </calculation>
