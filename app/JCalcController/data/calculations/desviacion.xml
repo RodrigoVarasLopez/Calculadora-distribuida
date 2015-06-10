@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="desviacion">
+	<!-- raiz2(Varianza x) -->
+	<operation id="desviacion">
+		<server name="localhost" port="7001"></server>
+		<type>desviacion</type>
+		<input type="Array" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>

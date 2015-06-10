@@ -102,6 +102,7 @@ public class FloatEngine {
         return resultado;
     }
     
+    
     public double desviacion (float[] operandos) throws ComputeEngineException{
         Double varianza = varianza(operandos);
         double resultado;

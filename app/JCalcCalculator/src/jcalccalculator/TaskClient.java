@@ -113,7 +113,23 @@ public class TaskClient implements Runnable {
             rs.addData(op);
             return ccp.sendResponse(rs);
         }
-        else if( op.getType().compareTo("mediaGeometrica")==0 ) {
+         else if( op.getType().compareTo("desviacion")==0 ) {
+            Float[] numeros =(Float[])op.getInputData().get(0).value;
+ 
+            float[] datos = ArrayUtils.toPrimitive(numeros);
+            Double res = null;
+            try {
+                res = new Double(fengine.desviacion(datos));
+            } catch (ComputeEngineException ex) {
+                Logger.getLogger(TaskClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            op.setResult(res);
+            
+            rs.setSubtype("_JCALC_OPERATION_OK_");
+            rs.addData(op);
+            return ccp.sendResponse(rs);
+        }
+         else if( op.getType().compareTo("mediaGeometrica")==0 ) {
             Float[] numeros =(Float[])op.getInputData().get(0).value;
  
             float[] datos = ArrayUtils.toPrimitive(numeros);
