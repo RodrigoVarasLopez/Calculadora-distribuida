@@ -21,6 +21,7 @@ public class Interfaz {
                 +"6. Varianza\n"
                 +"7. Desviación típica\n"
                 +"8. Moda\n"
+                +"9. Mediana\n"
                 +"s. Salir\n"
                 +"Seleccione la operación desada:"
             );

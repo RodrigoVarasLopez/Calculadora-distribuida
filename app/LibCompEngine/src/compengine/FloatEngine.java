@@ -133,7 +133,12 @@ public class FloatEngine {
                     } 
                 } 
         }
-        return operandos[(int)(operandos.length/2)];
+        if (operandos.length%2==0)
+            return (operandos[(int)(operandos.length/2)]+operandos[(int)(operandos.length/2)-1])/2;
+        
+        else 
+            return operandos[(int)(operandos.length/2)];
+            
     }
     
     public double desviacion (float[] operandos) throws ComputeEngineException{
