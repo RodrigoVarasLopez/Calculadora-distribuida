@@ -20,13 +20,14 @@ public class Interfaz {
                 +"5. Operacion de segundo grado\n"
                 +"6. Varianza\n"
                 +"7. Desviación típica\n"
+                +"8. Moda\n"
                 +"s. Salir\n"
                 +"Seleccione la operación desada:"
             );
         
     }
     public static boolean isvalid (int ch){
-        if (ch <'1'| ch>'7'& ch !='s') return false;
+        if (ch <'1'| ch>'8'& ch !='s') return false;
         else return true;
     }
     public static String respuesta(char ch){
@@ -37,6 +38,7 @@ public class Interfaz {
         if (ch == '5') return "segundoGrado";
         if (ch == '6') return "varianza";
         if (ch == '7') return "desviacion";
+        if (ch == '8') return "moda";
         if (ch == 's') return "salir";
         else return "fallo";  
     }

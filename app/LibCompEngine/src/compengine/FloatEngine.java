@@ -5,6 +5,8 @@
  */
 package compengine;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author profesor
@@ -102,6 +104,23 @@ public class FloatEngine {
         return resultado;
     }
     
+    public double moda (float[] operandos){
+        double resultado = 0;
+        int contador=0, contadorComp=0;
+        for (int j = 0; j < operandos.length; j++) {
+            contadorComp = 0;
+                for (int i = 1; i < operandos.length-1; i++) {
+                    if (operandos[i]== operandos[j]){
+                        contadorComp++;   
+                    }
+                    if (contadorComp>contador){
+                        contador=contadorComp;
+                        resultado = operandos[j];
+                    }
+                }  
+            }       
+        return resultado;
+    }
     
     public double desviacion (float[] operandos) throws ComputeEngineException{
         Double varianza = varianza(operandos);

@@ -129,6 +129,18 @@ public class TaskClient implements Runnable {
             rs.addData(op);
             return ccp.sendResponse(rs);
         }
+         else if( op.getType().compareTo("moda")==0 ) {
+            Float[] numeros =(Float[])op.getInputData().get(0).value;
+ 
+            float[] datos = ArrayUtils.toPrimitive(numeros);
+            Double res = null;
+            res = new Double(fengine.moda(datos));
+            op.setResult(res);
+            
+            rs.setSubtype("_JCALC_OPERATION_OK_");
+            rs.addData(op);
+            return ccp.sendResponse(rs);
+        }
          else if( op.getType().compareTo("mediaGeometrica")==0 ) {
             Float[] numeros =(Float[])op.getInputData().get(0).value;
  

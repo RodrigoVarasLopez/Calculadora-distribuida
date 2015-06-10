@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="moda">
+	<!-- raiz2(Varianza x) -->
+	<operation id="moda">
+		<server name="localhost" port="7001"></server>
+		<type>moda</type>
+		<input type="Array" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>
