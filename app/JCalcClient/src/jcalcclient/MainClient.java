@@ -56,7 +56,7 @@ public class MainClient {
 
                         Calculation calc = (Calculation)rs.getData().get(0);
 
-                        for(Operation op : calc.getOperaciones()) {                    
+                        for(Operation op : calc.getOperaciones()) {
                             TaskOperation task = new TaskOperation(op, calc);
                             Thread th1 = new Thread((Runnable) task);
                             th1.start();
@@ -72,14 +72,14 @@ public class MainClient {
 
                         // El resultado del calculo es el de la última operacion
                         Operation last = calc.getOperaciones().get(calc.getOperaciones().size()-1);
-                        calc.setResult( last.getResult() );
-                         Double[] res = new Double[2];
-                         res=(Double[]) calc.getResult();
-                        System.out.println("Exito. Resultado1: " + res[0]);
-                        System.out.println("Exito. Resultado1: " + res[1]);
-                        sc.close();
+                            calc.setResult( last.getResult() );
+                             Double[] res = new Double[2];
+                             res=(Double[]) calc.getResult();
+                            System.out.println("Exito. Resultado1: " + res[0]);
+                            System.out.println("Exito. Resultado1: " + res[1]);
+                            sc.close();
+                        }
                     }           
-                }
                 catch(UnknownHostException e) {
                 }
                 catch(IOException e) {
@@ -115,17 +115,17 @@ public class MainClient {
                             th1.join();
                             if( task.getError()==null ) {
                                 calc.updateOperation( task.getResult() );                        
-                            }
-                            else {
-                                // Error en operacion. Abortar o repetir??
                             }                                        
                         }  // for Operation
 
                         // El resultado del calculo es el de la última operacion
                         Operation last = calc.getOperaciones().get(calc.getOperaciones().size()-1);
-                        calc.setResult( last.getResult() );
-
-                        System.out.println("Exito. Resultado: " + calc.getResult() );
+                        if (last.getError()==null){
+                            calc.setResult( last.getResult() );
+                            System.out.println("Exito. Resultado: " + calc.getResult() );
+                        }
+                        else  System.out.println(last.getError().msg);
+                        
                         sc.close();
                     }           
                 }

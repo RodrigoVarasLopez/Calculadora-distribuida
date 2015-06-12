@@ -86,19 +86,47 @@ public class TaskOperation implements Runnable {
             // Preparamos los datos. Leemos por teclado lo que se necesite
             for(InputData inData : op.getInputData()) {
                 if( inData.type.compareTo("Number")==0 ) {
-                    System.out.print("Introduzca el valor de " + inData.name + ": ");
-                    inData.value = new Float(Float.parseFloat(br.readLine()));
+                    int salir = 0;
+                    do{ 
+                        try{
+                            System.out.print("Introduzca el valor de " + inData.name + ": ");
+                            inData.value = new Float(Float.parseFloat(br.readLine()));
+                            salir=1;
+                        }catch(NumberFormatException e){
+                            salir =2;
+                        }
+                    }while(salir != 1);
+                    salir = 0;
                 }
                 else if( inData.type.compareTo("Array")==0 ) {
-                    System.out.print("Cuantos elementos en el array?: ");
-                    int n = Integer.parseInt(br.readLine());
+                    int n=0,salir = 0;
+                    do{
+                        try{
+                            System.out.print("Cuantos elementos en el array?: ");
+                             n = Integer.parseInt(br.readLine()); 
+                            salir=1;
+                        }catch(NumberFormatException e){
+                            salir = 2;
+                        }
+                    }while(salir != 1);
+                    salir=0;
+                   
                     Float[] datos = new Float[n];
                     System.out.println("Introduzca los elementos: ");
                     for(int i=0;i<n;i++) {
-                        System.out.println("elemento: " + i);
-                        datos[i] = new Float(Float.parseFloat(br.readLine()));
+                         salir=0;
+                        do{
+                            try{
+                                System.out.println("elemento: " + i);
+                                datos[i] = new Float(Float.parseFloat(br.readLine()));
+                                salir=1;
+                            }catch(NumberFormatException e){   
+                                salir = 2;
+                            }
+                        }while (salir != 1);
                     }
                     inData.value = datos;
+                            
                 }
                 else if( inData.type.compareTo("Constant")==0 ) {
                 }    

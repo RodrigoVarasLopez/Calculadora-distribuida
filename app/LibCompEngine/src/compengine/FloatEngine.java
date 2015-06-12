@@ -85,16 +85,17 @@ public class FloatEngine {
         return Math.sqrt((double)x);
     }
     
-    public double media (float[] operandos){
+    public double media (float[] operandos) throws ComputeEngineException{
         double resultado = 0;
         for (float operando: operandos) {
             resultado = resultado + operando;
         }
+         if( operandos.length==0 ) throw new ComputeEngineException("DIVIDE_BY_ZERO");
         resultado = resultado / operandos.length;
         return resultado;
     }
     
-    public double varianza (float[] operandos){
+    public double varianza (float[] operandos) throws ComputeEngineException{
         Double media = media(operandos);
         double resultado = 0;
         for (float operando: operandos) {
@@ -144,6 +145,7 @@ public class FloatEngine {
     public double desviacion (float[] operandos) throws ComputeEngineException{
         Double varianza = varianza(operandos);
         double resultado;
+        if( varianza<0.0F ) throw new ComputeEngineException("SQUAREROOT_NEGATIVE");
         resultado = raiz2(varianza);
         return resultado;
     }
@@ -153,7 +155,7 @@ public class FloatEngine {
         for (float operando: operandos) {
             resultado = resultado * operando;
         }
-        if( resultado<0.0D ) throw new ComputeEngineException("SQUAREROOT_NEGATIVE");
+        if( resultado<0.0D ) throw new ComputeEngineException("DIVIDE_BY_ZERO");
         return Math.pow(resultado, 1.0/operandos.length);
     }
      public double aproximacionE(float x){

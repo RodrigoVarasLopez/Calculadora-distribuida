@@ -22,13 +22,15 @@ public class Interfaz {
                 +"7. Desviación típica\n"
                 +"8. Moda\n"
                 +"9. Mediana\n"
+                +"r. Raiz2\n"
+                +"d. Dividir\n"
                 +"s. Salir\n"
                 +"Seleccione la operación desada:"
             );
         
     }
     public static boolean isvalid (int ch){
-        if (ch <'1'| ch>'9'& ch !='s') return false;
+        if (ch <'1'| ch>'9'& ch !='s'& ch !='r'& ch !='d') return false;
         else return true;
     }
     public static String respuesta(char ch){
@@ -41,6 +43,8 @@ public class Interfaz {
         if (ch == '7') return "desviacion";
         if (ch == '8') return "moda";
         if (ch == '9') return "mediana";
+        if (ch == 'r') return "raiz";
+        if (ch == 'd') return "division";
         if (ch == 's') return "salir";
         else return "fallo";  
     }

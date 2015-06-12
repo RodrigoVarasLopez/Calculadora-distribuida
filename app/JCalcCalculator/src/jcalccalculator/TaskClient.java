@@ -46,7 +46,11 @@ public class TaskClient implements Runnable {
                 end = true;
             }
             else if( r.getSubtype().compareTo("_JCALC_OPERATION_")==0 ) {
-                this.cmdOperation(r);
+                try {
+                    this.cmdOperation(r);
+                } catch (ComputeEngineException ex) {
+                    Logger.getLogger(TaskClient.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }                
             r = ccp.receiveRequest();
         }
@@ -57,7 +61,7 @@ public class TaskClient implements Runnable {
     
     //--------------------------------------------------------------------------
     
-    public boolean cmdOperation(Request rq)
+    public boolean cmdOperation(Request rq) throws ComputeEngineException
     {   
         Response rs = new Response();
         
@@ -209,8 +213,16 @@ public class TaskClient implements Runnable {
                 rs.addData(op);
             }
             catch(ComputeEngineException e) {
-                // Error si se dividio por cero
+                
             }
+            if (rs.getSubtype()== null){
+                protocol.common.Error err = new protocol.common.Error();
+                err.type = "DIVIDE_BY_ZERO";
+                err.msg= "Error: El divisor no puede ser 0";
+                op.setError(err);
+                rs.setSubtype("DIVIDE_BY_ZERO");
+            }
+            
             return ccp.sendResponse(rs);            
         }        
         else if( op.getType().compareTo("x2")==0 ) {
@@ -276,7 +288,19 @@ public class TaskClient implements Runnable {
                 rs.addData(op);
             }
             catch(ComputeEngineException e) {
-                // Error si se dividio por cero
+                protocol.common.Error err = new protocol.common.Error();
+                rs.setSubtype("_JCALC_OPERATION_Error_");
+                if (e.getMessage() == "DIVIDE_BY_ZERO"){
+                    err.type = "DIVIDE_BY_ZERO";
+                    err.msg= "Error: El divisor no puede ser 0";
+                    op.setError(err);
+                }
+                if (e.getMessage() == "SQUAREROOT_NEGATIVE"){
+                    err.type = "SQUAREROOT_NEGATIVE";
+                    err.msg= "Error: No se puede hacer una raiz negativa";
+                    op.setError(err);
+                }
+                return ccp.sendResponse(rs);  
             }
             return ccp.sendResponse(rs);            
         } 

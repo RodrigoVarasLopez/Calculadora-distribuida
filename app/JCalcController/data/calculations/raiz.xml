@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<calculation type="raiz2">
+	<!-- raiz2(x) -->
+        <operation id="raiz">
+		<server name="localhost" port="7001"></server>
+		<type>raiz2</type>
+		<input type="Number" name="x"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>

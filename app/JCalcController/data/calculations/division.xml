@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<calculation type="division">
+	<!-- x/y -->
+        <operation id="division">
+		<server name="localhost" port="7001"></server>
+		<type>x/y</type>
+		<input type="Number" name="x"></input>
+                <input type="Number" name="y"></input>
+		<result type="Number"></result>
+	</operation>
+	
+</calculation>
