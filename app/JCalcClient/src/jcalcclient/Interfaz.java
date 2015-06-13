@@ -33,7 +33,7 @@ public class Interfaz {
         if (ch <'1'| ch>'9'& ch !='s'& ch !='r'& ch !='d') return false;
         else return true;
     }
-    public static String respuesta(char ch){
+    public static String optionName(char ch){
         if (ch == '1') return "aproximacionE";
         if (ch == '2') return "medGeometrica";
         if (ch == '3') return "media";

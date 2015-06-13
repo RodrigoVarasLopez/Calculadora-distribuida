@@ -213,7 +213,10 @@ public class TaskClient implements Runnable {
                 rs.addData(op);
             }
             catch(ComputeEngineException e) {
-                
+                    protocol.common.Error err = new protocol.common.Error();
+                    err.type = "DIVIDE_BY_ZERO";
+                    err.msg= "Error: El divisor no puede ser 0";
+                    op.setError(err);
             }
             if (rs.getSubtype()== null){
                 protocol.common.Error err = new protocol.common.Error();
@@ -276,8 +279,8 @@ public class TaskClient implements Runnable {
             float[] suma= new float[2];
             resta[0] = datos[0];
             resta[1] = datos[2];
-            suma[0] = datos [1];
-            suma[1] = datos [2];
+            suma[0]  = datos [1];
+            suma[1]  = datos [2];
             try {
                 Double[] res = new Double[2];
                 res[0]= new Double(fengine.dividir(suma));

@@ -67,7 +67,7 @@ public class FloatEngine {
     }
      public double cambioSigno(float x)
     {        
-        return (double)x-(double)(x+x);
+        return (double)x*(double)(-1);
     }   
 
     //--------------------------------------------------------------------------
