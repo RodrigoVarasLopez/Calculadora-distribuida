@@ -73,7 +73,7 @@ public class MainClient {
                             Double[] res = new Double[2];
                             res=(Double[]) calc.getResult();
                             System.out.println("Exito. Resultado1: " + res[0]);
-                            System.out.println("Exito. Resultado1: " + res[1]);   
+                            System.out.println("Exito. Resultado2: " + res[1]);   
                         }
                         else{
                             if (last.getError()==null){

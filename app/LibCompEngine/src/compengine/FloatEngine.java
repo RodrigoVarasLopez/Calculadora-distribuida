@@ -161,7 +161,7 @@ public class FloatEngine {
      public double aproximacionE(float x){
         double resultado=1;
         
-        for (int i = 0; i <= x; i++) {
+        for (int i = 1; i <= x; i++) {
             resultado= resultado + 1/FloatEngine.factorial(i);      
              }
         return resultado;
