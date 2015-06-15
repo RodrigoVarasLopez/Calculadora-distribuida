@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <calculation type="varianza">
-	<!-- (x1+x2+...+xn)/n -->
+	<!-- varianza -->
 	<operation id="varianza">
 		<server name="localhost" port="7001"></server>
 		<type>varianza</type>
