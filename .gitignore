@@ -46,3 +46,6 @@ Temporary Items
 /app/JCalcCalculator/dist/
 /app/JCalcClient/dist/
 /app/JCalcController/dist/
+/app/LibCompEngine/build/
+/app/JCalcCalculator/build/
+/app/JCalcController/build/

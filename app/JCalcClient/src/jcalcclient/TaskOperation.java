@@ -56,7 +56,8 @@ public class TaskOperation implements Runnable {
             }
             else if( crs.getSubtype().compareTo("_JCALC_OPERATION_ERROR_")==0 ) {
                 // Fallo. Se aborta el Calculo o se reintenta?
-                err = (protocol.common.Error)crs.getData().get(0);
+                op = (Operation) crs.getData().get(0);
+                err = (protocol.common.Error)op.getResult();
                 System.err.println(err.msg);
             }            
         }

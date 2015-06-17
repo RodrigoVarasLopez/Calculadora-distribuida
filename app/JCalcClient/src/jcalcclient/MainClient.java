@@ -93,6 +93,7 @@ public class MainClient {
                                 else{
                                     if (last.getError()==null){
                                         calc.setResult( last.getResult() );
+                                        Operation opr=calc.getOperaciones().get(0);
                                         System.out.println("Exito. Resultado: " + calc.getResult() );
                                     }
                                     else  System.out.println(last.getError().msg);

@@ -215,20 +215,14 @@ public class TaskClient implements Runnable {
                 rs.setSubtype("_JCALC_OPERATION_OK_");
                 rs.addData(op);
             }
-            catch(ComputeEngineException e) {
-                    protocol.common.Error err = new protocol.common.Error();
-                    err.type = "DIVIDE_BY_ZERO";
-                    err.msg= "Error: El divisor no puede ser 0";
-                    op.setError(err);
-            }
-            if (rs.getSubtype()== null){
+            catch(ComputeEngineException ex) {
                 protocol.common.Error err = new protocol.common.Error();
-                err.type = "DIVIDE_BY_ZERO";
-                err.msg= "Error: El divisor no puede ser 0";
-                op.setError(err);
-                rs.setSubtype("DIVIDE_BY_ZERO");
+                err.type = ex.getMessage();
+                err.msg = "Divisor 0";
+                op.setResult(err);
+                rs.setSubtype("_JCALC_OPERATION_ERROR_");
             }
-            
+            rs.addData(op);
             return ccp.sendResponse(rs);            
         }        
         else if( op.getType().compareTo("x2")==0 ) {
@@ -297,19 +291,22 @@ public class TaskClient implements Runnable {
                 rs.setSubtype("_JCALC_OPERATION_OK_");
                 rs.addData(op);
             }
-            catch(ComputeEngineException e) {
+            catch(ComputeEngineException ex) {
+                if (ex.getMessage() == "DIVIDE_BY_ZERO"){
                 protocol.common.Error err = new protocol.common.Error();
-                rs.setSubtype("_JCALC_OPERATION_Error_");
-                if (e.getMessage() == "DIVIDE_BY_ZERO"){
-                    err.type = "DIVIDE_BY_ZERO";
-                    err.msg= "Error: El divisor no puede ser 0";
-                    op.setError(err);
+                err.type = ex.getMessage();
+                err.msg = "Divisor 0";
+                op.setResult(err);
+                rs.setSubtype("_JCALC_OPERATION_ERROR_");
                 }
-                if (e.getMessage() == "SQUAREROOT_NEGATIVE"){
-                    err.type = "SQUAREROOT_NEGATIVE";
-                    err.msg= "Error: No se puede hacer una raiz negativa";
-                    op.setError(err);
+                if (ex.getMessage() == "SQUAREROOT_NEGATIVE"){
+                protocol.common.Error err = new protocol.common.Error();
+                err.type = ex.getMessage();
+                err.msg = "Raíz cuadrada negativa";
+                op.setResult(err);
+                rs.setSubtype("_JCALC_OPERATION_ERROR_");
                 }
+                rs.addData(op);
                 return ccp.sendResponse(rs);  
             }
             return ccp.sendResponse(rs);            
