@@ -125,8 +125,7 @@ public class TaskOperation implements Runnable {
                             }
                         }while (salir != 1);
                     }
-                    inData.value = datos;
-                            
+                    inData.value = datos;            
                 }
                 else if( inData.type.compareTo("Constant")==0 ) {
                 }    
