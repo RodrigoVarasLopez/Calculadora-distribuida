@@ -30,7 +30,7 @@ public class MainController implements Runnable {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         ArrayList<ServidoresCalc> lista = new ArrayList<ServidoresCalc>();
-        lista=ServidoresCalc.cargarUsuarios();
+        lista=ServidoresCalc.cargarServidores();
         MainController app = new MainController();
         app.init(args);
         app.run();        
@@ -73,6 +73,7 @@ public class MainController implements Runnable {
     
     //--------------------------------------------------------------------------
     
+    @Override
     public void run()
     { 
         try {

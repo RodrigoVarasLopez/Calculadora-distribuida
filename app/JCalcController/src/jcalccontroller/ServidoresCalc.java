@@ -30,7 +30,7 @@ public class ServidoresCalc {
         this.puerto = pass;
     }
 
-    public static ArrayList<ServidoresCalc> cargarUsuarios() throws FileNotFoundException, IOException{
+    public static ArrayList<ServidoresCalc> cargarServidores() throws FileNotFoundException, IOException{
         ArrayList<ServidoresCalc> lista = new ArrayList<ServidoresCalc>();
         try{
             File f = new File(NOMFICHERO);
