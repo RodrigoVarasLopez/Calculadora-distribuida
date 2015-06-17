@@ -8,6 +8,7 @@ package jcalccontroller;
 import java.text.ParseException;
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 
 import protocol.common.*;
 import protocol.clientcontroller.*;
@@ -26,8 +27,10 @@ public class MainController implements Runnable {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
+        ArrayList<ServidoresCalc> lista = new ArrayList<ServidoresCalc>();
+        lista=ServidoresCalc.cargarUsuarios();
         MainController app = new MainController();
         app.init(args);
         app.run();        
