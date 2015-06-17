@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JCalcController">
+  <ClassDiagramComponents>
+    <Class name="CalculationParser" package="jcalccontroller" visibility="public" xPosition="846.0" yPosition="326.0">
+      <Fields>
+        <Field name="CALCULATIONDIR" type="String" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="parse" returnType="Calculation" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Configuration" package="jcalccontroller" visibility="public" xPosition="129.0" yPosition="43.0">
+      <Fields>
+        <Field name="port" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createDefault" returnType="Configuration" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Log" package="jcalccontroller" visibility="public" xPosition="162.0" yPosition="346.0">
+      <Fields>
+        <Field name="logsys" type="PrintStream" visibility="private"/>
+        <Field name="sdf" type="SimpleDateFormat" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="type"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="write" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainController" package="jcalccontroller" visibility="public" xPosition="466.0" yPosition="149.0">
+      <Fields>
+        <Field name="cfg" type="Configuration" visibility="public" isStatic="true"/>
+        <Field name="log" type="Log" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="init" returnType="void" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="finish" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TaskClient" package="jcalccontroller" visibility="public" xPosition="822.0" yPosition="24.0">
+      <Fields>
+        <Field name="ccp" type="ClientControllerProtocol" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ClientControllerProtocol" name="ccp"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="cmdCalculation" returnType="boolean" visibility="public">
+          <Argument type="Request" name="rq"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="jcalccontroller.Configuration" target="jcalccontroller.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="task" source="jcalccontroller.MainController" target="jcalccontroller.TaskClient" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="log" source="jcalccontroller.MainController" target="jcalccontroller.Log" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cfg" source="jcalccontroller.MainController" target="jcalccontroller.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Calculation" source="jcalccontroller.TaskClient" target="jcalccontroller.CalculationParser" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

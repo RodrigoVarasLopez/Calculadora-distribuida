@@ -54,10 +54,10 @@ public class TaskOperation implements Runnable {
                 ctp.sendRequest(crq);   
                 st.close();
             }
-            else {
+            else if( crs.getSubtype().compareTo("_JCALC_OPERATION_ERROR_")==0 ) {
                 // Fallo. Se aborta el Calculo o se reintenta?
-                err = new protocol.common.Error();
-                err.type = "Operation";
+                err = (protocol.common.Error)crs.getData().get(0);
+                System.err.println(err.msg);
             }            
         }
         catch(UnknownHostException ex) {  

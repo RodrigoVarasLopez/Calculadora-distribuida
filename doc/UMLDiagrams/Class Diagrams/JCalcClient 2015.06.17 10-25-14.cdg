@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JCalcClient">
+  <ClassDiagramComponents>
+    <Class name="Interfaz" package="jcalcclient" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="showmenu" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="isvalid" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="int" name="ch"/>
+        </Method>
+        <Method name="optionName" returnType="String" visibility="public" isStatic="true">
+          <Argument type="char" name="ch"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainClient" package="jcalcclient" visibility="public" xPosition="321.0" yPosition="39.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TaskOperation" package="jcalcclient" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="calc" type="Calculation" visibility="private"/>
+        <Field name="op" type="Operation" visibility="private"/>
+        <Field name="err" type="protocol.common.Error" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Operation" name="op"/>
+          <Argument type="Calculation" name="calc"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getError" returnType="protocol.common.Error" visibility="public"/>
+        <Method name="prepareInput" returnType="void" visibility="private"/>
+        <Method name="getResult" returnType="Operation" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="task" source="jcalcclient.MainClient" target="jcalcclient.TaskOperation" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="contiene" source="jcalcclient.MainClient" target="jcalcclient.Interfaz" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

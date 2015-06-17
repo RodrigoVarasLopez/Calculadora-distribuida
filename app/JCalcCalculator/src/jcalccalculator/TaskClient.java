@@ -161,15 +161,18 @@ public class TaskClient implements Runnable {
             Float[] numeros =(Float[])op.getInputData().get(0).value;
  
             float[] datos = ArrayUtils.toPrimitive(numeros);
-            Double res = null;
             try {
-                res = fengine.mediaGeometrica(datos);
+                Double res = fengine.mediaGeometrica(datos);
+                op.setResult(res);
+                rs.setSubtype("_JCALC_OPERATION_OK_");
             } catch (ComputeEngineException ex) {
-                Logger.getLogger(TaskClient.class.getName()).log(Level.SEVERE, null, ex);
+                protocol.common.Error err = new protocol.common.Error();
+                err.type = ex.getMessage();
+                err.msg = "Raíz cuadrada negativa";
+                op.setResult(err);
+                rs.setSubtype("_JCALC_OPERATION_ERROR_");
             }
-            op.setResult(res);
             
-            rs.setSubtype("_JCALC_OPERATION_OK_");
             rs.addData(op);
             return ccp.sendResponse(rs);
         }
@@ -256,16 +259,20 @@ public class TaskClient implements Runnable {
         else if( op.getType().compareTo("raiz2")==0 ) {
             
             Float n = (Float)op.getInputData().get(0).value;
-            double rss = 0;
+            double rss = 0; 
             try {
                 rss = fengine.raiz2(n.floatValue());
+                Double res = new Double(rss);
+                op.setResult(res);            
+                rs.setSubtype("_JCALC_OPERATION_OK_");
             } catch (ComputeEngineException ex) {
-                Logger.getLogger(TaskClient.class.getName()).log(Level.SEVERE, null, ex);
+                protocol.common.Error err = new protocol.common.Error();
+                err.type = ex.getMessage();
+                err.msg = "Raíz cuadrada negativa";
+                op.setResult(err);
+                rs.setSubtype("_JCALC_OPERATION_ERROR_");
             }
-            Double res = new Double(rss);
-            // Double res = new Double(fengine.x2(n.floatValue()));
-            op.setResult(res);            
-            rs.setSubtype("_JCALC_OPERATION_OK_");
+     
             rs.addData(op);
             return ccp.sendResponse(rs); 
         }        

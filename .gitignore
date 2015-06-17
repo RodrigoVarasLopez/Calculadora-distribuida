@@ -41,3 +41,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/app/LibProtocol/dist/
+/app/LibCompEngine/dist/
+/app/JCalcCalculator/dist/
+/app/JCalcClient/dist/
+/app/JCalcController/dist/

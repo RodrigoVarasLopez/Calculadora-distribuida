@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="LibProtocol">
+  <ClassDiagramComponents>
+    <Class name="BaseProtocol" package="protocol" visibility="public" xPosition="1615.0" yPosition="129.0">
+      <Fields>
+        <Field name="s" type="Socket" visibility="protected"/>
+        <Field name="out" type="ObjectOutputStream" visibility="protected"/>
+        <Field name="in" type="ObjectInputStream" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Socket" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="sendRequest" returnType="boolean" visibility="public">
+          <Argument type="Request" name="request"/>
+        </Method>
+        <Method name="receiveResponse" returnType="Response" visibility="public"/>
+        <Method name="sendResponse" returnType="boolean" visibility="public">
+          <Argument type="Response" name="response"/>
+        </Method>
+        <Method name="receiveRequest" returnType="Request" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ClientCalculatorProtocol" package="protocol.clientcalculator" visibility="public" xPosition="1139.0" yPosition="184.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Socket" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initClient" returnType="boolean" visibility="public"/>
+        <Method name="initCalculator" returnType="boolean" visibility="public"/>
+        <Method name="createOperationRequest" returnType="Request" visibility="public">
+          <Argument type="Operation" name="operation"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClientControllerProtocol" package="protocol.clientcontroller" visibility="public" xPosition="1593.0" yPosition="902.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Socket" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initClient" returnType="boolean" visibility="public"/>
+        <Method name="initController" returnType="boolean" visibility="public"/>
+        <Method name="createCalculationRequest" returnType="Request" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Calculation" package="protocol.common" visibility="public" xPosition="162.0" yPosition="501.0">
+      <Fields>
+        <Field name="type" type="String" visibility="private"/>
+        <Field name="operaciones" type="ArrayList&lt;Operation&gt;" visibility="private"/>
+        <Field name="result" type="Object" visibility="private"/>
+        <Field name="error" type="Error" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+        <Method name="getOperaciones" returnType="ArrayList&lt;Operation&gt;" visibility="public"/>
+        <Method name="addOperacion" returnType="void" visibility="public">
+          <Argument type="Operation" name="op"/>
+        </Method>
+        <Method name="getResult" returnType="Object" visibility="public"/>
+        <Method name="setResult" returnType="void" visibility="public">
+          <Argument type="Object" name="result"/>
+        </Method>
+        <Method name="getError" returnType="Error" visibility="public"/>
+        <Method name="setError" returnType="void" visibility="public">
+          <Argument type="Error" name="error"/>
+        </Method>
+        <Method name="updateOperation" returnType="void" visibility="public">
+          <Argument type="Operation" name="op"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CalculatorServer" package="protocol.common" visibility="public" xPosition="162.0" yPosition="94.0">
+      <Fields>
+        <Field name="name" type="String" visibility="public"/>
+        <Field name="port" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Error" package="protocol.common" visibility="public" xPosition="795.0" yPosition="882.0">
+      <Fields>
+        <Field name="type" type="String" visibility="public"/>
+        <Field name="msg" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="InputData" package="protocol.common" visibility="public" xPosition="162.0" yPosition="286.0">
+      <Fields>
+        <Field name="type" type="String" visibility="public"/>
+        <Field name="name" type="String" visibility="public"/>
+        <Field name="value" type="Object" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Message" package="protocol.common" visibility="public" xPosition="1204.0" yPosition="730.0">
+      <Fields>
+        <Field name="type" type="String" visibility="protected"/>
+        <Field name="subtype" type="String" visibility="protected"/>
+        <Field name="data" type="ArrayList" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+        <Method name="getSubtype" returnType="String" visibility="public"/>
+        <Method name="setSubtype" returnType="void" visibility="public">
+          <Argument type="String" name="subtype"/>
+        </Method>
+        <Method name="getData" returnType="ArrayList" visibility="public"/>
+        <Method name="addData" returnType="void" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Operation" package="protocol.common" visibility="public" xPosition="729.0" yPosition="94.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="type" type="String" visibility="private"/>
+        <Field name="calcServer" type="CalculatorServer" visibility="private"/>
+        <Field name="inputData" type="ArrayList&lt;InputData&gt;" visibility="private"/>
+        <Field name="result" type="Object" visibility="private"/>
+        <Field name="error" type="Error" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="server"/>
+          <Argument type="int" name="port"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+        <Method name="getServer" returnType="CalculatorServer" visibility="public"/>
+        <Method name="getInputData" returnType="ArrayList&lt;InputData&gt;" visibility="public"/>
+        <Method name="addInputData" returnType="void" visibility="public">
+          <Argument type="String" name="type"/>
+          <Argument type="String" name="name"/>
+          <Argument type="Object" name="data"/>
+        </Method>
+        <Method name="getResult" returnType="Object" visibility="public"/>
+        <Method name="setResult" returnType="void" visibility="public">
+          <Argument type="Object" name="result"/>
+        </Method>
+        <Method name="getError" returnType="Error" visibility="public"/>
+        <Method name="setError" returnType="void" visibility="public">
+          <Argument type="Error" name="error"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Request" package="protocol.common" visibility="public" xPosition="1541.0" yPosition="560.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Response" package="protocol.common" visibility="public" xPosition="1228.0" yPosition="519.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="protocol.clientcalculator.ClientCalculatorProtocol" target="protocol.common.Request" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="operaciones" source="protocol.common.Calculation" target="protocol.common.Operation" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Operation&gt;"/>
+    <UseRelation source="protocol.BaseProtocol" target="protocol.common.Request" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="error" source="protocol.common.Calculation" target="protocol.common.Error" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="error" source="protocol.common.Operation" target="protocol.common.Error" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="protocol.clientcontroller.ClientControllerProtocol" target="protocol.common.Request" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="protocol.common.Calculation" target="protocol.common.Operation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="calcServer" source="protocol.common.Operation" target="protocol.common.CalculatorServer" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="protocol.common.Calculation" target="protocol.common.Error" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="protocol.clientcalculator.ClientCalculatorProtocol" target="protocol.BaseProtocol"/>
+    <IsRelation name="is" source="protocol.common.Request" target="protocol.common.Message"/>
+    <UseRelation source="protocol.common.Operation" target="protocol.common.CalculatorServer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="protocol.common.Operation" target="protocol.common.InputData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="protocol.clientcontroller.ClientControllerProtocol" target="protocol.BaseProtocol"/>
+    <HasRelation name="inputData" source="protocol.common.Operation" target="protocol.common.InputData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;InputData&gt;"/>
+    <UseRelation source="protocol.BaseProtocol" target="protocol.common.Response" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="protocol.common.Response" target="protocol.common.Message"/>
+    <UseRelation source="protocol.common.Operation" target="protocol.common.Error" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="JCalcCalculator">
+  <ClassDiagramComponents>
+    <Class name="Configuration" package="jcalccalculator" visibility="public" xPosition="109.0" yPosition="57.0">
+      <Fields>
+        <Field name="port" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="createDefault" returnType="Configuration" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Log" package="jcalccalculator" visibility="public" xPosition="152.0" yPosition="346.0">
+      <Fields>
+        <Field name="logsys" type="PrintStream" visibility="private"/>
+        <Field name="sdf" type="SimpleDateFormat" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="type"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="write" returnType="void" visibility="public">
+          <Argument type="String" name="msg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainCalculator" package="jcalccalculator" visibility="public" xPosition="492.0" yPosition="71.0">
+      <Fields>
+        <Field name="cfg" type="Configuration" visibility="public" isStatic="true"/>
+        <Field name="log" type="Log" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="init" returnType="void" visibility="public">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="finish" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TaskClient" package="jcalccalculator" visibility="public" xPosition="830.0" yPosition="115.0">
+      <Fields>
+        <Field name="ccp" type="ClientCalculatorProtocol" visibility="private"/>
+        <Field name="fengine" type="FloatEngine" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ClientCalculatorProtocol" name="ccp"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="cmdOperation" returnType="boolean" visibility="public">
+          <Argument type="Request" name="rq"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="task" source="jcalccalculator.MainCalculator" target="jcalccalculator.TaskClient" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="log" source="jcalccalculator.MainCalculator" target="jcalccalculator.Log" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jcalccalculator.Configuration" target="jcalccalculator.Configuration" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cfg" source="jcalccalculator.MainCalculator" target="jcalccalculator.Configuration" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

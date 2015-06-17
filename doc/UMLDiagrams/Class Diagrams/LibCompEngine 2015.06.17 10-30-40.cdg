@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="LibCompEngine">
+  <ClassDiagramComponents>
+    <Class name="ComputeEngineException" package="compengine" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="message"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="FloatEngine" package="compengine" visibility="public" xPosition="377.0" yPosition="187.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="sumar" returnType="double" visibility="public">
+          <Argument type="float[]" name="numeros"/>
+        </Method>
+        <Method name="restar" returnType="double" visibility="public">
+          <Argument type="float[]" name="numeros"/>
+        </Method>
+        <Method name="multiplicar" returnType="double" visibility="public">
+          <Argument type="float[]" name="numeros"/>
+        </Method>
+        <Method name="dividir" returnType="double" visibility="public">
+          <Argument type="float[]" name="numeros"/>
+        </Method>
+        <Method name="x2" returnType="double" visibility="public">
+          <Argument type="float" name="x"/>
+        </Method>
+        <Method name="cambioSigno" returnType="double" visibility="public">
+          <Argument type="float" name="x"/>
+        </Method>
+        <Method name="xey" returnType="double" visibility="public">
+          <Argument type="float" name="x"/>
+          <Argument type="float" name="y"/>
+        </Method>
+        <Method name="raiz2" returnType="double" visibility="public">
+          <Argument type="float" name="x"/>
+        </Method>
+        <Method name="media" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="varianza" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="moda" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="mediana" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="desviacion" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="mediaGeometrica" returnType="double" visibility="public">
+          <Argument type="float[]" name="operandos"/>
+        </Method>
+        <Method name="aproximacionE" returnType="double" visibility="public">
+          <Argument type="float" name="x"/>
+        </Method>
+        <Method name="factorial" returnType="double" visibility="public" isStatic="true">
+          <Argument type="int" name="n"/>
+        </Method>
+        <Method name="raiz2" returnType="double" visibility="private">
+          <Argument type="Double" name="x"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="IntegerEngine" package="compengine" visibility="public" xPosition="716.0" yPosition="33.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="sumar" returnType="int" visibility="public">
+          <Argument type="int[]" name="numeros"/>
+        </Method>
+        <Method name="restar" returnType="int" visibility="public">
+          <Argument type="int[]" name="numeros"/>
+        </Method>
+        <Method name="multiplicar" returnType="int" visibility="public">
+          <Argument type="int[]" name="numeros"/>
+        </Method>
+        <Method name="dividir" returnType="int" visibility="public">
+          <Argument type="int[]" name="numeros"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
